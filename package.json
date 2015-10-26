@@ -1,0 +1,27 @@
+{
+  "name": "project4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basiabodurov/project4.git"
+  },
+  "author": "Basia Bodurov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/basiabodurov/project4/issues"
+  },
+  "homepage": "https://github.com/basiabodurov/project4#readme",
+  "devDependencies": {
+    "browser-sync": "^2.9.11",
+    "connect-history-api-fallback": "^1.1.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-sass": "^2.0.4",
+    "gulp-watch": "^4.3.5"
+  }
+}

@@ -1,0 +1,22 @@
+		<div class="loginPage">
+			<header class="header">
+				<h2>Who are you?</h2>
+			</header>
+			<div>
+				<form name="checkinForm" class="checkin-form" ng-class="{'show-validation' : showValidation}" ng-submit="submit()" novalidate>
+					<div class="form-body">
+						<input class="name" name="userName" type="text" placeholder="Name" ng-model="colonist.name" required />
+						<input  ng-model="colonist.age" class="age" name="age" type="number" min="1" placeholder="Age" required />
+						<div class="custom-select">
+							<select  class="occupation" name="occupation" ng-model="colonist.job_id" ng-class="{ placeholder: !colonist.job_id }" required>
+								<option value="" class="placeholder">Select occupation</option>
+								<option value="{{ job.id }}" ng-repeat="job in jobs">{{ job.name }}</option>
+							</select>
+						</div>
+					</div>
+				<div class="red-button">
+					<button type="submit" value="Check in" ng-click="submitRegistration($event, checkinForm)">Check in</button>
+	      		</div>
+				</form>
+		</div>
+		</div>

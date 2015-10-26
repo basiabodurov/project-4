@@ -1,0 +1,24 @@
+		<div class="reportPage">
+			<header class="header">
+				<h2>Report Encounter</h2>
+				<p>Safety on Mars is your responsibility</p>
+			</header>
+				<div>
+					<form name="checkinForm" class="checkin-form" ng-class="{'show-validation' : showValidation}" ng-submit="submit()" novalidate>
+					<div class="form-body">
+						<div class="custom-select">
+							<select  class="alien" name="alien" ng-model="alienType" required>
+								<option value="" class="placeholder">Select alien type</option>
+								<option value="{{ alien }}" ng-repeat="alien in aliens">{{ alien }}</option>
+							</select>
+						</div>
+		      		<textarea name="comment" ng-model="actionTaken" placeholder="Action taken" required></textarea>
+		      		</div>
+
+			      		<div class="red-button">
+							<button type="submit" value="Report" ng-click="submitReport($event, checkinForm)">Submit Report</button>
+						</div>
+					</form>
+			</div>
+		</div>
+	

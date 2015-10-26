@@ -1,0 +1,385 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* Container used for styling the custom select, the buttom class below adds the bg gradient, corners, etc. */
+.custom-select {
+  position: relative;
+  height: 2rem;
+  display: block;
+  padding: 0;
+  width: 100%; }
+
+/* This is the native select, we're making everything but the text invisible so we can see the button styles in the wrapper */
+.custom-select select {
+  width: 100%;
+  margin: 0;
+  background: none;
+  border: 1px solid transparent;
+  outline: none;
+  box-sizing: border-box;
+  /* Remove select styling */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; }
+
+/* Custom arrow sits on top of the select - could be an image, SVG, icon font, etc. or the arrow could just baked into the bg image on the select. Note this si a 2x image so it will look bad in browsers that don't support background-size. In production, you'd handle this resolution switch via media query but this is a demo. */
+.custom-select::after {
+  content: "";
+  position: absolute;
+  pointer-events: none; }
+
+/* Hover style */
+/* Focus style */
+.custom-select select:focus {
+  outline: none; }
+
+/* ------------------------------------  */
+/* START OF UGLY BROWSER-SPECIFIC HACKS */
+/* ----------------------------------  */
+/* OPERA - Pre-Blink nix the custom arrow, go with a native select button to keep it simple. Targeted via this hack http://browserhacks.com/#hack-a3f166304aafed524566bc6814e1d5c7 */
+x:-o-prefocus, .custom-select::after {
+  display: none; }
+
+/* IE 10/11+ - This hides native dropdown button arrow so it will have the custom appearance, IE 9 and earlier get a native select - targeting media query hack via http://browserhacks.com/#hack-28f493d247a12ab654f6c3637f6978d5 - looking for better ways to achieve this targeting */
+/* The second rule removes the odd blue bg color behind the text in the select button in IE 10/11 and sets the text color to match the focus style's - fix via http://stackoverflow.com/questions/17553300/change-ie-background-color-on-unopened-focused-select-box */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .custom-select select::-ms-expand {
+    display: none; }
+  .custom-select select:focus::-ms-value {
+    background: transparent;
+    color: #222; } }
+
+/* FIREFOX won't let us hide the native select arrow, so we have to make it wider than needed and clip it via overflow on the parent container. The percentage width is a fallback since FF 4+ supports calc() so we can just add a fixed amount of extra width to push the native arrow out of view. We're applying this hack across all FF versions because all the previous hacks were too fragile and complex. You might want to consider not using this hack and using the native select arrow in FF. Note this makes the menus wider than the select button because they display at the specified width and aren't clipped. Targeting hack via http://browserhacks.com/#hack-758bff81c5c32351b02e10480b5ed48e */
+/* Show only the native arrow */
+@-moz-document url-prefix() {
+  .custom-select {
+    overflow: hidden; }
+  .custom-select select {
+    width: 120%;
+    width: calc(100% + em); } }
+
+/* Firefox focus has odd artifacts around the text, this kills that. See https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-focusring */
+.custom-select select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000; }
+
+/* ------------------------------------  */
+/*  END OF UGLY BROWSER-SPECIFIC HACKS  */
+/* ------------------------------------  */
+.header, .home-dot, .login, .form-body, .checkin-form, .custom-select, .red-button, a {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-flow: nowrap column;
+      -ms-flex-flow: nowrap column;
+          flex-flow: nowrap column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+/* Extra Resetting */
+* {
+  box-sizing: border-box; }
+
+/* App CSS */
+body {
+  font-family: Raleway, sans-serif;
+  font-size: 18px;
+  height: 100vh;
+  width: 100vh; }
+
+.page {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0; }
+
+.homePage {
+  background-color: #ed4343;
+  color: white;
+  height: 100vh; }
+
+.header {
+  height: 20vh;
+  width: 100%;
+  font-size: 2rem;
+  font-weight: bold; }
+
+.home-dot {
+  height: 85vh;
+  width: 100%;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around; }
+
+.loginPage {
+  background-color: black;
+  color: white; }
+
+.form-body {
+  height: 50vh;
+  width: 100%; }
+  .form-body input, .form-body textarea {
+    width: 95%;
+    height: 35px;
+    line-height: 35px;
+    margin: 15px 0;
+    box-sizing: border-box;
+    padding: 0 0 0 1rem; }
+  .form-body select {
+    padding: 0 0 0 1rem;
+    height: 35px;
+    font-size: 1.1rem;
+    font-family: Raleway;
+    line-height: 2rem;
+    color: #ed4343; }
+
+.form-body textarea {
+  height: 145px;
+  line-height: 1.2rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  overflow: hidden;
+  font-size: 1.1rem;
+  font-family: Raleway;
+  line-height: 2rem; }
+
+.custom-select {
+  width: 95%;
+  background-color: white;
+  margin: 15px 0;
+  color: #ed4343; }
+
+.red-button {
+  height: 30vh;
+  width: 100%;
+  background: black; }
+  .red-button button {
+    color: white;
+    background: #ed4343;
+    border: none;
+    width: 95%;
+    padding: 16px 0;
+    font-size: 1.2rem;
+    font-family: Raleway; }
+
+.reportPage {
+  background-color: black;
+  color: white;
+  height: 100vh; }
+
+.encountersPage {
+  background-color: white;
+  color: black;
+  height: 100vh; }
+
+p {
+  font-size: 1rem;
+  line-height: 2rem; }
+
+@-webkit-keyframes border-pulse {
+  0% {
+    box-shadow: 0 0 0 1rem rgba(255, 255, 255, 0.1), 0 0 0 2rem rgba(255, 255, 255, 0.15), 0 0 0 3rem rgba(255, 255, 255, 0.2); }
+  50% {
+    box-shadow: 0 0 0 1.25rem rgba(255, 255, 255, 0.1), 0 0 0 2.75rem rgba(255, 255, 255, 0.1), 0 0 0 4rem rgba(255, 255, 255, 0); }
+  75% {
+    box-shadow: 0 0 0 1.5rem rgba(255, 255, 255, 0.1), 0 0 0 3rem rgba(255, 255, 255, 0), 0 0 0 5rem rgba(255, 255, 255, 0); }
+  100% {
+    box-shadow: 0 0 0 1.75rem rgba(255, 255, 255, 0), 0 0 0 3.75rem rgba(255, 255, 255, 0), 0 0 0 6rem rgba(255, 255, 255, 0); } }
+
+@keyframes border-pulse {
+  0% {
+    box-shadow: 0 0 0 1rem rgba(255, 255, 255, 0.1), 0 0 0 2rem rgba(255, 255, 255, 0.15), 0 0 0 3rem rgba(255, 255, 255, 0.2); }
+  50% {
+    box-shadow: 0 0 0 1.25rem rgba(255, 255, 255, 0.1), 0 0 0 2.75rem rgba(255, 255, 255, 0.1), 0 0 0 4rem rgba(255, 255, 255, 0); }
+  75% {
+    box-shadow: 0 0 0 1.5rem rgba(255, 255, 255, 0.1), 0 0 0 3rem rgba(255, 255, 255, 0), 0 0 0 5rem rgba(255, 255, 255, 0); }
+  100% {
+    box-shadow: 0 0 0 1.75rem rgba(255, 255, 255, 0), 0 0 0 3.75rem rgba(255, 255, 255, 0), 0 0 0 6rem rgba(255, 255, 255, 0); } }
+
+.border-pulse {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: white;
+  -webkit-animation: border-pulse 3s infinite ease-in-out;
+          animation: border-pulse 3s infinite ease-in-out; }
+
+a {
+  text-decoration: none;
+  color: white;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  height: 25vh; }
+
+::-webkit-input-placeholder {
+  color: #ed4343;
+  font-size: 1.1rem;
+  font-family: Raleway;
+  line-height: 2rem; }
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #ed4343;
+  font-size: 1.1rem;
+  font-family: Raleway;
+  line-height: 2rem; }
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #ed4343;
+  font-size: 1.1rem;
+  font-family: Raleway;
+  line-height: 2rem; }
+
+:-ms-input-placeholder {
+  color: #ed4343;
+  font-size: 1.1rem;
+  font-family: Raleway;
+  line-height: 2rem; }
+
+.show-validation {
+  transition: 0.5s linear all; }
+
+@-webkit-keyframes invalid-input {
+  0% {
+    box-shadow: 0 0 0 0rem #e61c26; }
+  100% {
+    box-shadow: 0 0 0 0.5rem rgba(230, 28, 38, 0.2); } }
+
+@keyframes invalid-input {
+  0% {
+    box-shadow: 0 0 0 0rem #e61c26; }
+  100% {
+    box-shadow: 0 0 0 0.5rem rgba(230, 28, 38, 0.2); } }
+
+.show-validation input.ng-invalid, .show-validation select.ng-invalid, .show-validation textarea.ng-invalid {
+  border-radius: 0;
+  -webkit-animation: invalid-input 0.5s infinite;
+          animation: invalid-input 0.5s infinite; }
+
+[ui-view].ng-enter, [ui-view].ng-leave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition: all 0.5s ease-in-out; }
+
+.welcome [ui-view].ng-enter {
+  opacity: 0; }
+
+.register [ui-view].ng-enter {
+  opacity: 0;
+  -webkit-transform: translate3d(0, -2000px, 0);
+  transform: translate3d(0, -2000px, 0); }
+
+.encounters [ui-view].ng-enter {
+  -webkit-transform: translate3d(200px, 0, 0);
+  transform: translate3d(200px, 0, 0); }
+
+.report [ui-view].ng-enter {
+  opacity: 0;
+  -webkit-transform: translate3d(-200px, 0, 0);
+  transform: translate3d(-200px, 0, 0); }
+
+.welcome [ui-view].ng-enter-active {
+  opacity: 1; }
+
+.register [ui-view].ng-enter-active {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.encounters [ui-view].ng-enter-active {
+  -opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.report [ui-view].ng-enter-active {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.welcome [ui-view].ng-leave {
+  opacity: 1; }
+
+.register [ui-view].ng-leave {
+  opacity: 1;
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1); }
+
+.encounters [ui-view].ng-leave {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.report [ui-view].ng-leave {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.welcome [ui-view].ng-leave-active {
+  opacity: 0; }
+
+.register [ui-view].ng-leave-active {
+  opacity: 0;
+  -webkit-transform: scale3d(0, 0, 0);
+  transform: scale3d(0, 0, 0); }
+
+.encounters [ui-view].ng-leave-active {
+  opacity: 0;
+  -webkit-transform: translate3d(-200px, 0, 0);
+  transform: translate3d(-200px, 0, 0); }
+
+.report [ui-view].ng-leave-active {
+  opacity: 0;
+  -webkit-transform: translate3d(200px, 0, 0);
+  transform: translate3d(200px, 0, 0); }

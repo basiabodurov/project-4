@@ -1,0 +1,358 @@
+@import "reset", "custom.select";
+
+%flex-prop {
+  display: flex;
+  justify-content: center;
+  flex-flow: nowrap column;
+  align-items: center;
+}
+
+/* Extra Resetting */
+
+* {
+   box-sizing: border-box;
+}
+
+/* App CSS */
+
+body {
+  font-family: Raleway, sans-serif;
+  font-size: 18px;
+  height: 100vh;
+  width: 100vh;
+}
+
+//streches the page
+.page {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+}
+
+	.homePage {
+		background-color: #ed4343;
+		color: white;
+    height: 100vh;
+    }
+
+	.header {
+    height: 20vh;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+    @extend %flex-prop;
+  }
+
+  .home-dot {
+    height: 85vh;
+    width: 100%;
+    @extend %flex-prop;
+    justify-content: space-around;
+  }
+
+  .login {
+    @extend %flex-prop;    
+  }
+
+	.loginPage {
+		background-color: black;
+		color: white;
+	}
+
+  .form-body {
+  @extend %flex-prop;
+   height: 50vh;
+   width: 100%;
+   input, textarea {
+    width: 95%;
+    height: 35px;
+    line-height: 35px;
+    margin: 15px 0;
+    box-sizing: border-box;
+    padding: 0 0 0 1rem;
+   }
+  select {
+    padding: 0 0 0 1rem;
+    height: 35px;
+    font-size: 1.1rem;
+    font-family: Raleway;
+    line-height: 2rem;
+    color: #ed4343
+}
+}
+
+   .form-body textarea {
+    height: 145px;
+    line-height: 1.2rem;
+    appearance: none;
+    overflow: hidden;
+    font-size: 1.1rem;
+    font-family: Raleway;
+    line-height: 2rem;
+   }
+
+  .checkin-form {
+  @extend %flex-prop;
+  }
+
+  .custom-select {
+    width: 95%;
+    background-color: white;
+    @extend %flex-prop;
+    margin: 15px 0;
+    color: #ed4343;
+}
+
+.red-button {
+  height: 30vh;
+  width: 100%;
+  background: black;
+  @extend %flex-prop;
+  button {
+    color: white;
+    background: #ed4343;
+    border: none;
+    width: 95%;
+    padding: 16px 0;
+    font-size: 1.2rem;
+    font-family: Raleway;
+  }
+}
+
+  .reportPage {
+    background-color: black;
+    color: white;
+    height: 100vh;
+  }
+
+	.encountersPage {
+		background-color: white;
+		color: black;
+    height: 100vh;
+	}
+
+  p {
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+
+@keyframes border-pulse {
+  0%   { 
+  box-shadow:
+    0 0 0 1rem rgba(255, 255, 255, 0.1),
+    0 0 0 2rem rgba(255, 255, 255, 0.15),
+    0 0 0 3rem rgba(255, 255, 255, 0.2);
+  }
+  50%  {       
+
+  box-shadow:
+    0 0 0 1.25rem rgba(255, 255, 255, 0.1),
+    0 0 0 2.75rem rgba(255, 255, 255, 0.1),
+    0 0 0 4rem rgba(255, 255, 255, 0);
+
+  }
+ 75%  {       
+
+  box-shadow:
+    0 0 0 1.50rem rgba(255, 255, 255, 0.1),
+    0 0 0 3rem rgba(255, 255, 255, 0),
+    0 0 0 5rem rgba(255, 255, 255, 0);
+
+  }
+  100% { 
+
+  box-shadow:
+    0 0 0 1.75rem rgba(255, 255, 255, 0),
+    0 0 0 3.75rem rgba(255, 255, 255, 0),
+    0 0 0 6rem rgba(255, 255, 255, 0);
+
+   }
+}
+
+.border-pulse {
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background:white;
+  animation: border-pulse 3s infinite ease-in-out;
+}
+
+a {
+	text-decoration: none;
+  color: white;
+  @extend %flex-prop;
+  justify-content: space-around;
+  height: 25vh;
+}
+
+::-webkit-input-placeholder {
+   color: #ed4343;
+   font-size: 1.1rem;
+   font-family: Raleway;
+   line-height: 2rem;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #ed4343;
+   font-size: 1.1rem;
+   font-family: Raleway;
+   line-height: 2rem;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #ed4343; 
+   font-size: 1.1rem; 
+   font-family: Raleway;
+   line-height: 2rem;
+}
+
+:-ms-input-placeholder {  
+   color: #ed4343;
+   font-size: 1.1rem;
+   font-family: Raleway;
+   line-height: 2rem;
+}
+
+.show-validation {
+  transition: 0.5s linear all;
+}
+
+@keyframes invalid-input {
+  0% {
+    box-shadow:
+      0 0 0 0rem rgba(230, 28, 38 , 1);
+  }
+  100% {
+    box-shadow:
+      0 0 0 0.5rem rgba(230, 28, 38, 0.2);
+  }
+}
+
+.show-validation {
+  input, select, textarea {
+    &.ng-invalid {
+      border-radius: 0;
+      animation: invalid-input 0.5s infinite;
+    }
+  }
+}
+
+[ui-view].ng-enter, [ui-view].ng-leave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  -webkit-transition:all .5s ease-in-out;
+    -moz-transition:all .5s ease-in-out;
+    -o-transition:all .5s ease-in-out;
+    transition:all .5s ease-in-out;
+}
+
+[ui-view].ng-enter {
+  
+  .welcome & {
+    opacity: 0; 
+  }
+
+  .register & {
+    opacity: 0;
+    -webkit-transform:translate3d(0, -2000px, 0);
+    -moz-transform:translate3d(0, -2000px, 0);
+    transform:translate3d(0, -2000px, 0);
+  }
+
+  .encounters & {
+    -webkit-transform:translate3d(200px, 0, 0);
+    -moz-transform:translate3d(200px, 0, 0);
+    transform:translate3d(200px, 0, 0);
+  }
+
+  .report & {
+    opacity:0;
+    -webkit-transform:translate3d(-200px, 0, 0);
+    -moz-transform:translate3d(-200px, 0, 0);
+    transform:translate3d(-200px, 0, 0);
+  }
+}
+
+[ui-view].ng-enter-active {
+  .welcome & {
+    opacity: 1; 
+  }
+  
+  .register & {
+    opacity: 1;
+    -webkit-transform:translate3d(0, 0, 0);
+    -moz-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
+  }
+
+  .encounters & {
+    -opacity: 1;
+    -webkit-transform:translate3d(0, 0, 0);
+    -moz-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
+  }
+
+  .report & {
+    opacity: 1;
+    -webkit-transform:translate3d(0, 0, 0);
+    -moz-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
+  }
+}
+
+[ui-view].ng-leave {
+  .welcome & {
+    opacity: 1; 
+  }
+  
+  .register & {
+    opacity: 1; 
+    -webkit-transform:scale3d(1,1,1);
+    -moz-transform:scale3d(1,1,1);
+    transform:scale3d(1,1,1);
+  }
+
+  .encounters & {
+    opacity:1;
+    -webkit-transform:translate3d(0, 0, 0);
+    -moz-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
+  }
+
+  .report & {
+    opacity:1;
+    -webkit-transform:translate3d(0, 0, 0);
+    -moz-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
+  }
+ 
+}
+
+[ui-view].ng-leave-active {
+  .welcome & {
+    opacity: 0;
+  }
+
+  .register & {
+    opacity: 0;
+    -webkit-transform:scale3d(0,0,0);
+    -moz-transform:scale3d(0,0,0);
+    transform:scale3d(0,0,0);
+  }
+
+  .encounters & {
+    opacity:0;
+    -webkit-transform:translate3d(-200px, 0, 0);
+    -moz-transform:translate3d(-200px, 0, 0);
+    transform:translate3d(-200px, 0, 0);
+  }
+
+  .report & {
+    opacity:0;
+    -webkit-transform:translate3d(200px, 0, 0);
+    -moz-transform:translate3d(200px, 0, 0);
+    transform:translate3d(200px, 0, 0);
+  }
+}
